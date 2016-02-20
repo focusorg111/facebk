@@ -1,0 +1,329 @@
+/*-----------------------------------------
+portBox CSS
+------------------------------------------*/
+
+.s-al-notice-board-list{
+	background: #f7f7f7;
+	padding-bottom: 20px;
+	padding-left: 0;
+    padding-top: 0;
+}
+.sticky-notes{
+	float:left;
+	background:url(../images/notice-bg.png);
+	padding:0;
+	margin:0;
+	border: 15px solid transparent;
+	-webkit-border-image: url(../images/notice-board-border.png) 30 30 round; /* Safari */
+    -o-border-image: url(../images/notice-board-border.png) 30 30 round; /* Opera */
+    border-image: url(../images/notice-board-border.png) 30 30 round;
+}
+
+.sticky-notes ul,li{
+  list-style:none;
+}
+.sticky-notes ul{
+  overflow:hidden;
+  padding:25px;
+}
+.sticky-notes ul li a{
+  text-decoration:none;
+  color:#666;
+  background: none repeat scroll 0 0 #f2edcf;
+  display:block;
+  height:10em;
+  width:10em;
+  padding:1em;
+  -webkit-box-shadow: 1px 5px 7px rgba(33,33,33,.7);
+     -moz-box-shadow:1px 5px 7px rgba(33,33,33,1);
+          box-shadow: 1px 5px 7px rgba(33, 33, 33, 0.7);
+  -webkit-transition:-webkit-transform .15s linear;
+     -moz-transition:-moz-transform .15s linear;
+       -o-transition:-o-transform .15s linear;
+	      transition:transform .15s linear;
+}
+.sticky-notes span{
+	font-size:.80em;
+	
+}
+.sticky-notes ul li{
+  margin: 5% 3%;
+    width: 27%;
+  float:left;
+}
+.sticky-notes ul li a:before{
+	content: url("../images/Pin.png");
+    margin-left: 89px;
+    padding: 0;
+    position: absolute;
+    top: -21px;
+    z-index:50;
+}
+.sticky-notes ul li:nth-child(2n) a:before{
+	content: url("../images/PinRed.png");
+    margin-left: 89px;
+    padding: 0;
+    position: absolute;
+    top: -21px;
+    z-index:50;
+}
+.sticky-notes ul li h2{
+ font-size: 15px;
+font-weight: bold;
+margin-top: 0;
+  padding-bottom:10px;
+  line-height:22px;
+  height:88px;
+  overflow:hidden;
+}
+.sticky-notes .date{
+	font-size:11px;
+	font-weight:bold;
+	margin-left: -7px;
+    width: 120%;
+}
+.userful-info{
+	width:100%;
+}
+.userful-info div{
+	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin: 10px 0 0 8px;
+    padding: 4px 10px;
+}
+.userful-info div i{
+	margin-right:10px;
+	margin-top:4px;
+}
+.sticky-notes .date i{ font-size:16px; margin-left:10px;}
+.sticky-notes .date i.fa-picture-o{ color:#E9503E}
+.sticky-notes .date i.fa-book{ color:#1A76AF}
+.sticky-notes ul li p{
+  font-family:"Reenie Beanie",arial,sans-serif;
+  font-size:100%;
+ 
+}
+.sticky-notes ul li a{
+  -webkit-transform: rotate(-6deg);
+  -o-transform: rotate(-6deg);
+  -moz-transform:rotate(-6deg);
+}
+.sticky-notes ul li:nth-child(even) a{
+  -o-transform:rotate(4deg);
+  -webkit-transform:rotate(4deg);
+  -moz-transform:rotate(4deg);
+  position:relative;
+  top:5px;
+  background:#ccc;
+}
+.sticky-notes ul li:nth-child(3n) a{
+  -o-transform:rotate(-3deg);
+  -webkit-transform:rotate(-3deg);
+  -moz-transform:rotate(-3deg);
+  position:relative;
+  top:-5px;
+}
+.sticky-notes ul li:nth-child(5n) a{
+  -o-transform:rotate(5deg);
+  -webkit-transform:rotate(5deg);
+  -moz-transform:rotate(5deg);
+  position:relative;
+  top:-10px;
+}
+.sticky-notes ul li a:hover{
+  box-shadow:2px 10px 7px rgba(0,0,0,.7);
+  -moz-box-shadow:2px 10px 7px rgba(0,0,0,.7);
+  -webkit-box-shadow: 2px 10px 7px rgba(0,0,0,.7);
+  -webkit-transform: scale(1.15);
+  -moz-transform: scale(1.15);
+  -o-transform: scale(1.15);
+  position:relative;
+  z-index:5;
+}
+
+
+.portBox-overlay {  
+	height: 100%;
+	width: 100%;
+	background: #000000;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	display: none;
+}
+
+.portBox {
+	top:0!important;
+	left:10%!important;
+	max-width:1280px;
+	position: absolute;
+	display:none;
+	background:#F5EDE0;
+	z-index: 1001;
+	padding: 30px;
+	text-align:left;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 10px;
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	min-width:200px;
+	font-family: 'Source Sans Pro', sans-serif;
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+
+.close-portBox{
+		font-size: 20px;
+		line-height: .5;
+		position: absolute;
+		top: -6px;
+		right: -7px;
+		color: #fff !important;
+		text-shadow:none;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight:bold;
+		cursor: pointer;
+		border-radius:50%;
+		padding:5px;
+		background-color:#5c5c5c;
+		overflow:visible;
+		border:2px solid #fff;
+		text-decoration:none;
+}
+
+.close-portBox:hover{
+	color: #5c5c5c !important;
+	background-color:#fff;
+	border:2px solid #5c5c5c;	
+}
+
+/*----------------------------------------
+porBox Content CSS
+-----------------------------------------*/
+.project{
+	width:600px;
+}
+.project .notice-userdetails{
+	border-bottom:1px solid #ccc;
+	padding-bottom:10px;
+	padding-top:5px;
+	font-size: 2.8em;
+	line-height:1;
+	font-family: 'open_sanslight';
+}
+.notice-userdetails span{
+	margin-left:5px;
+}
+.notice-userdetails img{
+	box-shadow:1px 2px 2px #999;
+}
+
+.notice-details {
+	 min-height: 184px;
+    overflow: hidden;
+	float:left;
+	border-bottom:1px solid #ccc;
+}
+.notice-details img{
+	margin-right:10px;
+	margin-top:0px;
+	border:1px solid #ccc;
+	box-shadow: 1px 2px 2px;
+	
+}
+.notice-details h2{
+	margin-top:5px;
+	font-family: 'open_sanslight';
+	margin-bottom:20px;
+	
+}
+
+.notice-details p{
+	line-height:1.5em;
+	margin-top:10px;
+	text-align:justify;
+	color: #999999;
+	
+}
+.notice-venue-date{
+	float:left;
+	min-height:30px;	
+}
+.notice-venue {
+	float:left;
+}
+.notice-date {
+	float:left;
+	width:300px;
+	text-align:right;
+}
+
+.notice-venue p{
+	font-size:14px;
+}
+.notice-date p{
+	font-size:14px;
+}
+.add-notice-fields-head{
+	float:left;
+	border-bottom:1px solid #ccc;
+	width:100%;
+	padding:0;
+	margin:0;
+}
+.add-notice-fields-head h2{
+	margin:0;
+	font-family: 'open_sanslight';
+	padding-bottom:10px;
+}
+.add-notice-fields{
+	float:left;
+	padding-top:10px;
+	padding-bottom:10px;
+	
+}
+.field-name{
+	float:left;
+	width:150px;
+	
+}
+.field-input{
+	float:left;
+	width:350px;
+	
+}
+
+
+@media only screen and (max-width: 1024px){
+	.project-pics{
+		width: 100%;
+	}
+	
+	.project-info{
+		width: 100%;
+		padding:0;
+		margin-top:40px;
+	}
+}
+
+@media only screen and (max-width: 420px){
+	
+	.project-info{
+		text-align:center;
+		margin-top:0;
+	}
+	
+	.project-info h3{
+		font-size:25px;
+		line-height:30px;
+	}
+	
+}

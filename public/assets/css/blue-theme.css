@@ -1,0 +1,58 @@
+header {
+    background: none repeat scroll 0 0 #1A76AF;
+}
+.s-al-nav {
+    background: none repeat scroll 0 0 #222;
+    padding: 0;
+}
+.breadcrumb{
+	background:#ddd;
+	color:#000;
+}
+.breadcrumb a{color:#000;}
+.breadcrumb > li + li:before {
+    color: #000;
+}
+.breadcrumb a, .breadcrumb .active, .breadcrumb li{ color:#000;}
+section.left{ background:#222;}
+section.right{ background:#efefef;}
+.s-al-nav ul li a {
+    border-bottom: 1px solid #2d2d2d;
+    padding: 10px 15px;
+}
+.s-al-nav ul li a:hover, .s-al-nav ul li.active a {
+	background:#0C0C0C;
+}
+.s-al-header-logo {
+    border-right: none;
+}
+.s-al-header-logout {
+    border-left: none;
+	padding:0;
+}
+.s-al-header-logout a{
+	color:#10567F;
+	padding:17px 10px ;
+}
+.s-al-header-logout a:hover{
+	color:#fff;
+}
+.s-al-header-logout a i{
+	font-size: 18px;
+    padding: 0 0px;
+}
+.s-al-logout {
+    font-size: 12px;
+    font-weight: normal;
+	/*border-left:1px solid #10567F;*/
+	color:#fff !important;
+    
+}
+.s-al-header-logout .s-al-logout i{
+	font-size:10px;
+	margin-left:3px;
+}
+.s-al-nav ul li:hover,.s-al-nav ul li.active{ border-color:transparent;}
+.s-al-header-logout >div:first-child{
+	margin-left:12px;
+}

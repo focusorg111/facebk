@@ -1,0 +1,16 @@
+.polls-meta{
+	display: block;
+    float: left;
+    min-height: 30px;
+    width: 62%;
+}
+.polls-meta h3{
+	font-size:12px;
+	padding:0;
+	margin:0 0 8px 0;
+}
+.polls-meta img{
+	margin-right:15px;
+	margin-top:3px;
+}
+	.alert{ margin-bottom:0;}

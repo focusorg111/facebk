@@ -1,0 +1,53 @@
+/**********		INDEX    **********
+
+/* --- Chapters Common View
+
+
+*******************************/
+
+
+/* Chapters Common View */
+
+.s-al-chapters .s-al-page-heading{
+	height:310px;
+}
+.s-al-chapters .s-al-page-heading h2{
+	background:url(../images/chapter-heading.png) no-repeat bottom;
+	height: 289px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 230px;
+	font-family: 'open_sanslight';
+	color:#fff;
+}
+.s-al-chapters .member-count{
+	background:#fff;
+	border-radius:30px;
+	color:#000;
+	font-size:16px;
+	padding:13px 20px;
+}
+.s-al-chapters .member-count:hover{
+	background:#00B98D;
+	color:#fff;
+}
+.s-al-chapters .member-count i{
+	margin-right:10px;
+}
+.modal-header{
+	background:#3276B1;
+	color:#fff;
+}
+.close{
+	color:#fff;
+}
+.chapter-content{
+	margin-top:20px;
+	display: block;
+    float: left;
+    margin-top: 20px;
+    width: 100%;
+}
+.chapter-admin-content-bar>div>div{
+	background:#f2f2f2;
+}

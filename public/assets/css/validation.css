@@ -1,0 +1,21 @@
+.form-group label.error{
+	
+	padding: 0;
+	font-size: 11px;
+	content: url("");
+	background: none;
+    border-color:none;
+    box-shadow:none ;
+    color: #D84E4E!important;
+
+}
+.form-group label.error:before{
+	content: url("");
+	margin: 0;
+	padding: 0;
+
+}
+.al-feed-row{
+	margin: 0;
+	padding: 0;
+}
