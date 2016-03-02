@@ -11,7 +11,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        dd(\Auth::user());
-    	return view('users.dashboard');
+        return view('users.dashboard');
     }
 }

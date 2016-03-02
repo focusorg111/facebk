@@ -6,12 +6,14 @@ use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\ChangePassword;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
@@ -20,7 +22,7 @@ class UserController extends Controller
      * @param int $id
      * @return array
      **/
-    public function register($id)
+    public function register()
     {
         return view('users.register');
     }
@@ -39,7 +41,7 @@ class UserController extends Controller
     {
 
         $inputs = \Request::all();
-        $inputs['password']=hash($inputs['password']);
+        $inputs['password']=bcrypt($inputs['password']);
         User::create($inputs);
         return view('users.registersuccess');
 
@@ -61,7 +63,41 @@ class UserController extends Controller
             echo $e->getMessage();
         }
     }
+    public function changePassword()
+    {
 
+        return view('users.change_password');
+
+    }
+    ##ChangePassword $request
+    public function postChangePassword()
+    {
+        $userID = 2 ;
+        // Grab the current user
+
+        // Get passwords from the user's input
+        $old_password 	= trim(Input::get('old_password'));
+
+
+        $oldPassword = bcrypt($old_password);
+
+        $password 		= Input::get('new_password');
+        $user 			= User::where('user_id', $userID)->where('password', $oldPassword)->first();
+        dd($user);
+        // test input password against the existing one
+        if(Hash::check($old_password, $user->getAuthPassword())){
+            $user->new_password = Hash::make($password);
+
+            // save the new password
+            if($user->save()) {
+                return Redirect::route('users.login')
+                    ->with('global', 'Your password has been changed.');
+            }
+        } else {
+            return Redirect::route('users.change_Password')
+                ->with('global', 'Your old password is incorrect.');
+        }
+    }
     public function reset()
     {
         $userName = "narayan";

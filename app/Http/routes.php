@@ -43,34 +43,29 @@ Route::group(['middleware' => ['web']], function ()
     Route::get('managenews', ['uses' => 'NewsController@manageNews' ,'as' => 'manage.news']);
     Route::resource('news', 'NewsController');
 
-    /*Route::get('news', ['uses' => 'NewsController@news' ,'as' => 'news']);
-    Route::get('newsdetail', ['uses' => 'NewsController@newsDetail' ,'as' => 'news.detail']);
-    Route::get('news/{id}', ['as' => 'news.show', 'uses' => 'NewsController@show' ]);
-
-    Route::get('news/{id}/edit', ['uses' => 'NewsController@edit' ,'as' => 'news.edit']);*/
 
     Route::post('publishnews', ['uses' => 'NewsController@publishNews' ,'as' => 'publish.news']);
     Route::get('index',['uses' => 'NewsController@index']);
     Route::get('addnews', ['uses' => 'NewsController@addNews' ,'as' => 'add.news']);
-   Route::get('register', ['uses' => 'UserController@register']);
-   Route::get('login', ['as' => 'users.login', 'uses' => 'UserController@login']);
-   Route::get('forget', ['uses' => 'UserController@forget']);
-   Route::any('users/registersuccess', ['uses' => 'UserController@registersuccess']);
-  Route::any('users/authenticate', ['uses' => 'UserController@authenticate']);
+    Route::get('register', ['uses' => 'UserController@register']);
+    Route::get('login', ['as' => 'users.login', 'uses' => 'UserController@login']);
+    Route::get('forget', ['uses' => 'UserController@forget']);
+    Route::any('users/registersuccess', ['uses' => 'UserController@registersuccess']);
 
+    Route::post('authenticate', ['as' => 'user.authenticate','uses' => 'UserController@authenticate']);
 
     Route::get('getData/{id?}', ['uses' => 'UserController@getData']);
 
-    Route::group(['middleware' => ['guest']], function()
-	{
-	   Route::get('users/logout', ['uses' => 'UserController@logout']);
+
+
+        Route::get('changepassword', ['uses' => 'UserController@changePassword']);
+        Route::post('postChangePassword', ['as' => 'change.password', 'uses' => 'UserController@postChangePassword']);
 
 		Route::get('dashboard', ['as' => 'dashboard.index', 'uses' => 'DashboardController@index']);
         Route::post('reset', [ 'uses' => 'UserController@reset', 'as' => 'password.reset']);
-        Route::post('password/reset', 'Auth\PasswordController@postReset');
+        Route::get('password/reset', 'Auth\PasswordController@postReset');
+        Route::get('users/logout', ['uses' => 'UserController@logout']);
 
        // Route::post('password/reset', 'Auth\PasswordController@postReset');
-	});
 
- 	
-    });
+});

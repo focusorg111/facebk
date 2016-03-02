@@ -19,7 +19,7 @@
 			        <i class="fa fa-twitter visible-xs"></i>
 			        <span class="hidden-xs"><i class="fa fa-linkedin"></i> &nbsp;LinkedIn</span>
 		        </a>
-	        </div>	
+	        </div>
 		</div>
 
 		<div class="row omb_row-sm-offset-3 omb_loginOr">
@@ -30,11 +30,11 @@
 		</div>
 
 		<div class="row omb_row-sm-offset-3">
-			<div class="col-xs-12 col-sm-6">	
+			<div class="col-xs-12 col-sm-6">
+
 			{{
-    		Form::open(array('url' => 'users/authenticate', 'method' => 'POST',
+    		Form::open(array('url' => 'authenticate', 'method' => 'POST',
     		'class'=> 'omb_loginForm',
-    		'action'=>'dashboard.html',
     		'autocomplete'=>'off'))
 			}}
 					<div class="input-group">
@@ -64,9 +64,9 @@
 					 'type'=>'submit'
 					 ])
 					 }}
-					 
+
 					{{
-        			Form::close()  
+        			Form::close()
         			}}
 			</div>
     	</div>
@@ -79,14 +79,14 @@
 					<a href="forget">Forgot password?</a>
 				</p>
 			</div>
-		</div>	
+		</div>
         <div class="row omb_row-sm-offset-3">
             <div class="col-xs-12 col-sm-6">
 				<p class="omb_forgotPwd">
 					Dont have an account? <a href="register">Click here to Create one</a>
 				</p>
 			</div>
-        </div>    	
+        </div>
 	</div>
             </div>
         </div>

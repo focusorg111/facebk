@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12 s-al-page-heading">
                 <div class="row">
-                    <div class="col-md-5"><h1>Add News</h1></div>
+                    <div class="col-md-5"><h1>Edit News</h1></div>
                     <div class="col-md-7">
                         <div class=" s-al-page-head-buttons text-right">
                             <div class="btn-group">
@@ -39,7 +39,7 @@
         <div class="col-md-12 s-al-content-forum-add common-form">
             <!-- Add Topic -->
             {!!
-    		Form::open(array('url' => route('news.store'), 'method' => 'POST',
+    		Form::open(array('url' => route('news.update', $news->news_id), 'method' => 'PUT',
     		'class'=> 'main',
     		'autocomplete'=>'off',
     		'files' => true,
@@ -52,7 +52,7 @@
                             <div class="grid2"><label>News Headline </label></div>
                             <div class="grid10 elVal">
                                 {{
-  						Form::text('topic_name', null,
+  						Form::text('topic_name', $news->topic_name,
   						['class'=> 'form-control',
   					      ' id'=>'topic_name',
   						'placeholder'=>'News Headline'
@@ -65,7 +65,7 @@
                             <div class="grid2"><label>Description </label></div>
                             <div class="grid10 elVal">
                                 {{
-                         Form::textarea('topic_description', null,
+                         Form::textarea('topic_description', $news->topic_description,
                          ['class'=> 'form-control',
                            ' id'=>'topic_description',
                          'placeholder'=>'News Description'
@@ -77,7 +77,7 @@
                                 <div class="grid2"><label>Date </label></div>
                                 <div class="grid10 elVal">
                                     {{
-                        Form::date('date', null,
+                        Form::date('date', $news->date,
                         ['class'=>'form-control datepicker',
                           ' id'=>'date',
                         'placeholder'=>'Date'
