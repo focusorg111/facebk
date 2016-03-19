@@ -40,6 +40,11 @@ Route::get('default1', function()
 Route::group(['middleware' => ['web']], function () 
 {
 
+   Route::get('profile/{id}', [ 'as'=> 'users.view.profile','uses' => 'ProfileController@viewProfile']);
+    Route::get('profile/{id}/edit', [ 'as'=>'users.edit.profile','uses' => 'ProfileController@editProfile']);
+    Route::post('save/profile/{id}',['as'=> 'save.profile', 'uses' => 'ProfileController@saveProfile']);
+    Route::get('registereduser',['as'=>'show.registerd','uses'=>'ProfileController@showRegistered']);
+    Route::get('registerlist',['as'=>'show.registerlist','uses'=>'ProfileController@registeredList']);
     Route::get('managenews', ['uses' => 'NewsController@manageNews' ,'as' => 'manage.news']);
     Route::resource('news', 'NewsController');
 
@@ -50,11 +55,18 @@ Route::group(['middleware' => ['web']], function ()
     Route::get('register', ['uses' => 'UserController@register']);
     Route::get('login', ['as' => 'users.login', 'uses' => 'UserController@login']);
     Route::get('forget', ['uses' => 'UserController@forget']);
-    Route::any('users/registersuccess', ['uses' => 'UserController@registersuccess']);
+
+    Route::get('change_password', ['as' => 'reset.password', 'uses' => 'UserController@changePassword1']);
+
+    Route::get('reset/{token}', ['uses' => 'UserController@resetPassword']);
+
+
+    Route::any('users/registersuccess', ['uses' => 'UserController@registerSuccess']);
 
     Route::post('authenticate', ['as' => 'user.authenticate','uses' => 'UserController@authenticate']);
 
     Route::get('getData/{id?}', ['uses' => 'UserController@getData']);
+
 
 
 

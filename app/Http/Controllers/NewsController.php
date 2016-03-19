@@ -104,7 +104,7 @@ class NewsController extends Controller
                 $inputs['image_name'] = $fileName;
             }
 
-unset($inputs['_token']);
+            unset($inputs['_token']);
             unset($inputs['_method']);
             News::where('news_id', $id)->update($inputs);
             Session::flash('flash_message', 'News successfully added!');

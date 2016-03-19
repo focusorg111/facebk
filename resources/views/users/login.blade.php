@@ -33,7 +33,7 @@
 			<div class="col-xs-12 col-sm-6">
 
 			{{
-    		Form::open(array('url' => 'authenticate', 'method' => 'POST',
+    		Form::open(array('url' => route('user.authenticate'), 'method' => 'POST',
     		'class'=> 'omb_loginForm',
     		'autocomplete'=>'off'))
 			}}

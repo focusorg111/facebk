@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
 
 use Illuminate\Http\Request;
 
@@ -13,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use App\User;
+
 use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
@@ -26,29 +27,59 @@ class UserController extends Controller
     {
         return view('users.register');
     }
+
+    /**
+     * user login
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function login()
     {
         return view('users.login');
     }
 
+    /**
+     * render view for forget password
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function forget()
     {
         return view('users.forget');
     }
 
+    /**
+     * register success
+     * encode password
+     * @param RegisterRequest $RegisterRequest
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
 
-    public function registersuccess(RegisterRequest $RegisterRequest)
+    public function registerSuccess(RegisterRequest $RegisterRequest)
     {
+        try {
+            \DB::beginTransaction();
+            $inputs = \Request::all();
+            $inputs['password'] = bcrypt($inputs['password']);
+            User::create($inputs);
+            return view('users.registersuccess');
+            \DB::commit();
+        }
+        catch (\Exception $e) {
 
-        $inputs = \Request::all();
-        $inputs['password']=bcrypt($inputs['password']);
-        User::create($inputs);
-        return view('users.registersuccess');
-
+            \DB::rollBack();
+        }
     }
+
+    /**
+     * auntheticate user to login
+     * @return mixed
+     */
     public function authenticate()
     {
         try {
+            \DB::beginTransaction();
             $credentials = array(
                 'email' => Input::get('email'),
                 'password' => Input::get('password'));
@@ -58,11 +89,69 @@ class UserController extends Controller
             } else {
                 return Redirect::back()->withErrors(['msg', 'The invalid user name and password']);
             }
-
+            \DB::commit();
         } catch (\Exception $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
+            \DB::rollBack();
         }
     }
+
+
+    /**
+     * update password using token
+     * @return Redirect to login page
+     */
+    public function changePassword1()
+    {
+        try {
+            \DB::beginTransaction();
+            $inputs = \Input::all();
+            User::where('token', $inputs['token'])->where('user_id', $inputs['user_id'])
+                ->update(['password' => \Hash::make($inputs['new_password']), 'token' => null]);
+            \Session::flash('flash_message', 'Password changed successfully');
+            return redirect(route('users.login'));
+            \DB::commit();
+        }
+        catch (\Exception $e) {
+           // echo $e->getMessage();
+            \DB::rollBack();
+        }
+       }
+
+    /**
+     * fetch token from database
+     *
+     * @param $token
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function resetPassword($token)
+    {
+        try {
+            \DB::beginTransaction();
+            if ($token != '') {
+                $userInfo = User::where('token', $token)->first();
+                if ($userInfo) {
+                    $userId = $userInfo->user_id;
+                    return view('users.reset_password', compact('token', 'userId'));
+                } else {
+                    echo 'token is incorrect';
+                }
+            } else {
+                echo 'token is invalid';
+            }
+            \DB::commit();
+        }
+    catch (\Exception $e) {
+        //echo $e->getMessage();
+        \DB::rollBack();
+    }
+
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function changePassword()
     {
 
@@ -98,15 +187,33 @@ class UserController extends Controller
                 ->with('global', 'Your old password is incorrect.');
         }
     }
+
+    /**
+     * check email
+     * use inbuilt function
+     * update token in database
+     */
     public function reset()
     {
-        $userName = "narayan";
-        $email = "sharmanarayan1991@gmail.com";
-        \Mail::send('email', ['user' => 'Narayan'], function ($m)  use ($userName, $email) {
-            $m->from('hello@app.com', 'Your Application');
-            $m->to($email, $userName)->subject('Your Reminder!');
-        });
+        try {
+            \DB::beginTransaction();
+            $inputs = \Input::all();
+
+            $userInfo = User::where('email', $inputs['email'])->first();
+            $userId = $userInfo->user_id;
+
+            $tokenId = str_random(50);
+            User::where('user_id', $userId)->update(['token' => $tokenId]);
+            \DB::commit();
+        }
+        catch (\Exception $e) {
+            echo $e->getMessage();
+            \DB::rollBack();
+        }
     }
+
+
+
     /**
      * users logout
      **/

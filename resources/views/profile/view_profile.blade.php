@@ -8,8 +8,8 @@
 <div class="col-md-12">
     <div class="row s-al-main-content">
         <div class="s-al-main-content s-al-chapters">
-            <div class="col-md-12 s-al-page-heading" style="background:url(images/party.jpg); background-size:100%;">
-                <h2><i class="fa fa-female"></i> Khushi Randhawa <a class="pull-right member-count" href="profile1.html"><i class="fa fa-pencil"></i> Edit Profile</a></h2>
+            <div class="col-md-12 s-al-page-heading" style="background:url('images/party.jpg'); background-size:100%;">
+                <h2><i class="fa fa-female"></i> Khushi Randhawa <a class="pull-right member-count" href={{route('users.edit.profile', $id)}}><i class="fa fa-pencil"></i> Edit Profile</a></h2>
             </div>
         </div>
         <div class="col-md-12 s-al-activity-feed">
@@ -27,7 +27,7 @@
                             <ul class="list-unstyled">
                                 <li class="row s-al-activity-list">
                                     <div class="col-md-2">
-                                        <img src="assets/img/user_img/1.jpg" class="img-responsive" alt="" />
+                                        <img src="{{asset('assets/img/user_img/1.jpg')}}" class="img-responsive" alt="" />
                                     </div>
                                     <div class="col-md-8">
                                         <div class="s-al-activity-title">
@@ -52,7 +52,7 @@
                                 </li>
                                 <li class="row s-al-activity-list">
                                     <div class="col-md-2">
-                                        <img src="assets/img/user_img/1.jpg" class="img-responsive" alt="" />
+                                        <img src="{{asset('assets/img/user_img/1.jpg')}}" class="img-responsive" alt="" />
                                     </div>
                                     <div class="col-md-8">
                                         <div class="s-al-activity-title">
@@ -77,7 +77,7 @@
                                 </li>
                                 <li class="row s-al-activity-list">
                                     <div class="col-md-2">
-                                        <img src="assets/img/user_img/1.jpg" class="img-responsive" alt="" />
+                                        <img src="{{asset('assets/img/user_img/1.jpg')}}" class="img-responsive" alt="" />
                                     </div>
                                     <div class="col-md-8">
                                         <div class="s-al-activity-title">
