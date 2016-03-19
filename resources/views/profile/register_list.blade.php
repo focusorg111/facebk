@@ -1,6 +1,4 @@
 
-
-
 @extends('layout.default3')
 @section('content')
     <table class="table table-bordered" id="users-table">
