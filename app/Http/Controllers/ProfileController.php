@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileRequest;
+use Yajra\Datatables\Datatables;
 
 
 class ProfileController extends Controller
@@ -65,6 +66,17 @@ class ProfileController extends Controller
     public function showRegistered()
     {
         return view('profile.show_registered_user');
+    }
+    public function RegisteredData()
+    {
+        return Datatables::of(User::select(['user_id','email','first_name','created_at','updated_at']))->addColumn('action','<a href="{{route("users.view.profile",$user_id)}}">View Profile</a>')
+            ->removeColumn('user_id')
+            ->editColumn('first_name','@if($first_name)
+                                 {{$first_name}}
+                             @else
+                                Not Applicable
+                            @endif')
+            ->make(true);
     }
     public function registeredList()
     {

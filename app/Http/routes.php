@@ -44,6 +44,7 @@ Route::group(['middleware' => ['web']], function ()
     Route::get('profile/{id}/edit', [ 'as'=>'users.edit.profile','uses' => 'ProfileController@editProfile']);
     Route::post('save/profile/{id}',['as'=> 'save.profile', 'uses' => 'ProfileController@saveProfile']);
     Route::get('registereduser',['as'=>'show.registerd','uses'=>'ProfileController@showRegistered']);
+    Route::get('registeres/data',['as'=>'registerd.data','uses'=>'ProfileController@RegisteredData']);
     Route::get('registerlist',['as'=>'show.registerlist','uses'=>'ProfileController@registeredList']);
     Route::get('managenews', ['uses' => 'NewsController@manageNews' ,'as' => 'manage.news']);
     Route::resource('news', 'NewsController');
